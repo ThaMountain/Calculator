@@ -20,11 +20,13 @@ let myArray = [];
 let newArr = [];
 let answer = 0; //declares variables for calculation
 
-calcScreen.innerText = '0'
+
+
 
 document.querySelectorAll(".btn-num").forEach((e) => {
   e.addEventListener("click", () => {
     myArray.push(e.innerText);
+    calcScreen.innerText = calcScreen.innerText + e.innerText;
     console.log(myArray);
   });
 }); //adds event listener for each number button. pushes each numbers text into my array when pressed.
@@ -34,6 +36,7 @@ document.querySelectorAll(".btn-oper").forEach((e) => {
     newArr.push(parseInt(myArray.join("")));
     newArr.push(e.innerText);
     myArray = [];
+    calcScreen.innerText = calcScreen.innerText + ' ' + e.innerText + ' ';
     console.log(newArr);
   });
 }); //event listener for each operator button. When pressed myArray's number strings are collapsed down to form one number string, then converted to an int and pushed into newArr. myArray is then reset.
@@ -42,6 +45,7 @@ btnEnter.addEventListener("click", () => {
   calculate(newArr);
   newArr = [];
   console.log(newArr);
+  calcScreen.innerText = answer.toString
 }); //Adds event listener to the enter button. When pressed it runs the calculate() function then resets newArr.
 
 btnAC.addEventListener("click", () => {
@@ -50,9 +54,7 @@ btnAC.addEventListener("click", () => {
   answer = 0;
 }); // Resets newArr, myArray, and answer.
 
-calcBody.addEventListener('click', () => {
-  calcScreen.innerText = 
-}) 
+
 
 function add(firstNum, secondNum) {
   return firstNum + secondNum;
