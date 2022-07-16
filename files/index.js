@@ -20,9 +20,6 @@ let myArray = [];
 let newArr = [];
 let answer = 0; //declares variables for calculation
 
-
-
-
 document.querySelectorAll(".btn-num").forEach((e) => {
   e.addEventListener("click", () => {
     myArray.push(e.innerText);
@@ -36,25 +33,24 @@ document.querySelectorAll(".btn-oper").forEach((e) => {
     newArr.push(parseInt(myArray.join("")));
     newArr.push(e.innerText);
     myArray = [];
-    calcScreen.innerText = calcScreen.innerText + ' ' + e.innerText + ' ';
+    calcScreen.innerText = calcScreen.innerText + " " + e.innerText + " ";
     console.log(newArr);
   });
 }); //event listener for each operator button. When pressed myArray's number strings are collapsed down to form one number string, then converted to an int and pushed into newArr. myArray is then reset.
 
 btnEnter.addEventListener("click", () => {
   calculate(newArr);
-  newArr = [];
+
   console.log(newArr);
-  calcScreen.innerText = answer.toString
+  calcScreen.innerText = answer.toString();
 }); //Adds event listener to the enter button. When pressed it runs the calculate() function then resets newArr.
 
 btnAC.addEventListener("click", () => {
   newArr = [];
   myArray = [];
   answer = 0;
+  calcScreen.innerText = "";
 }); // Resets newArr, myArray, and answer.
-
-
 
 function add(firstNum, secondNum) {
   return firstNum + secondNum;
@@ -91,6 +87,6 @@ function calculate(newArr) {
       answer = divide(answer, newArr[i + 1]);
     } //runs the divide function with answer and the number in front of the operator.
   }
-  console.log(answer)
+  console.log(answer);
   return answer;
 }
